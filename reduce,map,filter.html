@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<body>
+
+    <p>点击进行map方法</p>
+    <button onclick="xianshimap()">点击计算</button>
+    <p id="demo"></p>
+
+    <p>点击进行filter方法</p>
+    <button onclick="xianshifilter()">点击计算</button>
+    <p id="demo2"></p>
+
+    <p>点击进行reduce方法</p>
+    <button onclick="xianshireduce()">点击计算</button>
+    <p id="demo3"></p>
+</body>
+
+<script>
+    // map方法
+    var numbers = [1, 55, 3, 4, 5, 6, 7, 8];
+    function mapfunction(elements, callback) {
+        var mapnumbers = [];
+        var x;
+        var i = 0;
+        for (; i < elements.length; i++) {
+            var c = numbers[i];
+            x = callback(c, i);
+            mapnumbers.push(x);
+        }
+        return mapnumbers
+    };
+
+    var ddd = mapfunction(numbers, function (value) {
+        return value + 2
+    });
+
+    function xianshimap() {
+        $("#demo").text(ddd);
+    }
+
+</script>
+<!--filter方法-->
+<script>
+    var numbers2 = [1, 55, 3, 4, 5, 6, 7, 8];
+    function filterfunction(elements2, callbackk) {
+        var filternumbers = [];
+        var z;
+        for (var j = 0; j < numbers2.length; j++) {
+            var v = numbers2[j];
+            z = callbackk(v, j);
+            if (z) {
+                filternumbers.push(v);
+            }
+        }
+        return filternumbers
+    }
+    var fff = filterfunction(numbers2, function (value) {
+        return value > 50
+    })
+
+    function xianshifilter() {
+        $("#demo2").text(fff)
+    }
+
+</script>
+<!--reduce方法-->
+<script>
+    var numbers3 = [1, 2, 1, 1, 1, 1, 1, 1];
+    function reducefunction(elements, callbackkk) {
+        var d;
+        var total;
+        for (var k = 1; k < numbers3.length; k++) {
+            var b = numbers3[k];
+            var h = numbers3[k - 1];
+            d = callbackkk(h, b, k);
+            numbers3[k] = d;
+            total = d;
+        }
+        return total
+    }
+
+    var ggg = reducefunction(numbers3, function (previousValue, currentValue) {
+        return previousValue + currentValue
+    })
+    
+    function xianshireduce() {
+        $("#demo3").text(ggg)
+    }
+
+</script>
+
+</html>
