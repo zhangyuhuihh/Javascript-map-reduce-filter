@@ -78,13 +78,14 @@
 <script>
     var numbers3 = [1, 2, 1, 1, 1, 1, 1, 1];
     function reducefunction(elements, callbackkk) {
+        var temporary=numbers3;
         var d;
         var total;
-        for (var k = 1; k < numbers3.length; k++) {
-            var b = numbers3[k];
-            var h = numbers3[k - 1];
+        for (var k = 1; k < temporary.length; k++) {
+            var b = temporary[k];
+            var h = temporary[k - 1];
             d = callbackkk(h, b, k);
-            numbers3[k] = d;
+            temporary[k] = d;
             total = d;
         }
         return total
